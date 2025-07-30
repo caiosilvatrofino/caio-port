@@ -1,0 +1,89 @@
+<footer class="footer">
+  <div class="container">
+    <!-- Footer Top -->
+    <div class="footer-content">
+      <!-- Logo e Descrição -->
+      <div class="footer-section">
+        <div class="footer-logo" (click)="scrollToTop()">💻 Caio Silva</div>
+        <p class="footer-description">
+          Desenvolvedor Full Stack apaixonado por criar soluções digitais
+          inovadoras com Angular, Java e tecnologias modernas.
+        </p>
+        <div class="social-links">
+          <button
+            *ngFor="let social of socialLinks"
+            class="social-link"
+            [style.background]="social.color"
+            (click)="openSocialLink(social.url)"
+            [attr.aria-label]="social.name"
+          >
+            {{ social.icon }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Links Rápidos -->
+      <div class="footer-section">
+        <h3 class="footer-title">Links Rápidos</h3>
+        <ul class="footer-links">
+          <li *ngFor="let link of quickLinks">
+            <a (click)="scrollToSection(link.anchor)" class="footer-link">
+              {{ link.label }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contato -->
+      <div class="footer-section">
+        <h3 class="footer-title">Contato</h3>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span class="contact-icon">📧</span>
+            <span>caios.trofino@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📱</span>
+            <span>(11) 97091-3872</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <span>São Paulo, SP - Brasil</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tecnologias -->
+      <div class="footer-section">
+        <h3 class="footer-title">Tecnologias</h3>
+        <div class="tech-stack">
+          <span class="tech-item">Angular</span>
+          <span class="tech-item">Java</span>
+          <span class="tech-item">TypeScript</span>
+          <span class="tech-item">Spring Boot</span>
+          <span class="tech-item">PostgreSQL</span>
+          <span class="tech-item">AWS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p class="copyright">
+          &copy; {{ currentYear }} Caio Silva. Todos os direitos reservados.
+        </p>
+        <div class="footer-bottom-links">
+          <span>Feito com ❤️ e Angular</span>
+          <button
+            class="back-to-top"
+            (click)="scrollToTop()"
+            aria-label="Voltar ao topo"
+          >
+            ⬆️ Topo
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

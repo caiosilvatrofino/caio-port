@@ -1,0 +1,43 @@
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <div class="nav-container">
+    <div class="logo" (click)="scrollToSection('home')">Caio Silva</div>
+    <!-- Desktop Menu -->
+    <ul class="nav-links">
+      <li *ngFor="let item of menuItems">
+        <a (click)="scrollToSection(item.anchor)" class="nav-link">
+          {{ item.label }}
+        </a>
+      </li>
+      <li>
+        <button class="theme-toggle" (click)="onThemeToggle()">🌙</button>
+      </li>
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button
+      class="mobile-menu-btn"
+      (click)="toggleMenu()"
+      [class.active]="isMenuOpen"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu (só aparece quando clicado) -->
+  <div class="mobile-menu" [class.active]="isMenuOpen" *ngIf="isMenuOpen">
+    <ul class="mobile-nav-links">
+      <li *ngFor="let item of menuItems">
+        <a (click)="scrollToSection(item.anchor)" class="mobile-nav-link">
+          {{ item.label }}
+        </a>
+      </li>
+      <li>
+        <button class="mobile-theme-toggle" (click)="onThemeToggle()">
+          🌙 Tema
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,31 @@
+<section id="sobre" class="about">
+  <div class="container">
+    <h2 class="section-title">Sobre Mim</h2>
+    <p class="section-subtitle">
+      Desenvolvedor full stack com 2+ anos de experiência
+    </p>
+
+    <div class="about-content">
+      <div class="about-image">🧑‍💻</div>
+      <div class="about-text">
+        <p>
+          Sou um desenvolvedor full stack especializado em Angular e Java, com
+          paixão por criar aplicações web modernas e eficientes. Tenho
+          experiência em todo o ciclo de desenvolvimento, e deploy em produção.
+        </p>
+        <p>
+          Atualmente trabalho com tecnologias como Angular, TypeScript, Java
+          Spring Boot, PostgreSQL. Sempre busco aprender novas tecnologias e
+          aplicar as melhores práticas de desenvolvimento.
+        </p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat-item" *ngFor="let stat of stats">
+        <div class="stat-number">{{ stat.number }}</div>
+        <div class="stat-label">{{ stat.label }}</div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,93 @@
+<section id="projetos" class="projects">
+  <div class="container">
+    <h2 class="section-title">Projetos em Destaque</h2>
+    <p class="section-subtitle">Alguns dos meus trabalhos mais recentes</p>
+
+    <!-- Filtros -->
+    <div class="project-filters">
+      <button
+        *ngFor="let filter of filters"
+        class="filter-btn"
+        [class.active]="selectedFilter === filter.value"
+        (click)="filterProjects(filter.value)"
+      >
+        {{ filter.label }}
+      </button>
+    </div>
+
+    <!-- Grid de Projetos -->
+    <div class="projects-grid">
+      <div
+        *ngFor="let project of filteredProjects"
+        class="project-card"
+        [class.featured]="project.featured"
+      >
+        <!-- Badge Featured -->
+        <div *ngIf="project.featured" class="featured-badge">⭐ Destaque</div>
+
+        <!-- Imagem do Projeto -->
+        <div class="project-image">
+          <div class="project-icon">{{ project.image }}</div>
+          <div class="project-overlay">
+            <div class="project-actions">
+              <button
+                *ngIf="project.demoUrl"
+                class="action-btn demo-btn"
+                (click)="openDemo(project.demoUrl)"
+                title="Ver Demo"
+              >
+                🔗 Demo
+              </button>
+              <button
+                *ngIf="project.githubUrl"
+                class="action-btn github-btn"
+                (click)="openGithub(project.githubUrl)"
+                title="Ver Código"
+              >
+                📁 GitHub
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conteúdo do Projeto -->
+        <div class="project-content">
+          <h3 class="project-title">{{ project.title }}</h3>
+          <p class="project-description">{{ project.description }}</p>
+
+          <!-- Tecnologias -->
+          <div class="project-tech">
+            <span *ngFor="let tech of project.technologies" class="tech-tag">
+              {{ tech }}
+            </span>
+          </div>
+
+          <!-- Links -->
+          <div class="project-links">
+            <button
+              *ngIf="project.demoUrl"
+              class="project-link demo-link"
+              (click)="openDemo(project.demoUrl)"
+            >
+              🔗 Ver Demo
+            </button>
+            <button
+              *ngIf="project.githubUrl"
+              class="project-link github-link"
+              (click)="openGithub(project.githubUrl)"
+            >
+              📁 Código
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mensagem quando não há projetos -->
+    <div *ngIf="filteredProjects.length === 0" class="no-projects">
+      <div class="no-projects-icon">🔍</div>
+      <h3>Nenhum projeto encontrado</h3>
+      <p>Tente selecionar outro filtro.</p>
+    </div>
+  </div>
+</section>

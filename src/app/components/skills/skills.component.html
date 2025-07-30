@@ -1,0 +1,27 @@
+<section id="skills" class="skills">
+  <div class="container">
+    <h2 class="section-title">Habilidades Técnicas</h2>
+    <p class="section-subtitle">
+      Tecnologias que domino e utilizo no dia a dia
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-category" *ngFor="let category of skillCategories">
+        <h3 class="category-title">
+          <span class="category-icon">{{ category.icon }}</span>
+          {{ category.title }}
+        </h3>
+
+        <div class="skill-item" *ngFor="let skill of category.skills">
+          <div class="skill-name">
+            <span>{{ skill.name }}</span>
+            <span>{{ skill.level }}%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" [style.width.%]="skill.level"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

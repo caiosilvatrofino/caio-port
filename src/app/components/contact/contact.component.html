@@ -1,0 +1,152 @@
+<section id="contato" class="contact">
+  <div class="container">
+    <h2 class="section-title">Vamos Trabalhar Juntos?</h2>
+
+    <div class="contact-content">
+      <!-- Informações de Contato -->
+      <div class="contact-info">
+        <h3 class="info-title">Informações de Contato</h3>
+        <p class="info-description">
+          Estou sempre aberto a novas oportunidades e projetos interessantes.
+          Entre em contato e vamos conversar!
+        </p>
+
+        <div class="contact-items">
+          <div
+            *ngFor="let info of contactInfo"
+            class="contact-item"
+            [class.clickable]="info.link"
+            (click)="openContactLink(info.link)"
+          >
+            <div class="contact-icon">{{ info.icon }}</div>
+            <div class="contact-details">
+              <div class="contact-label">{{ info.label }}</div>
+              <div class="contact-value">{{ info.value }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botão Download CV -->
+        <div class="cv-section">
+          <button class="cv-btn" (click)="downloadCV()">📄 Download CV</button>
+        </div>
+
+        <!-- Redes Sociais -->
+        <div class="social-section">
+          <h4>Me encontre também em:</h4>
+          <div class="social-links">
+            <a
+              href="https://github.com/caiosilvatrofino"
+              target="_blank"
+              class="social-link github"
+            >
+              🐙 GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/caio-silva361/"
+              target="_blank"
+              class="social-link linkedin"
+            >
+              💼 LinkedIn
+            </a>
+            <a
+              href="https://wa.me/5511970913872"
+              target="_blank"
+              class="social-link whatsapp"
+            >
+              📱 WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulário de Contato -->
+      <div class="contact-form-container">
+        <form
+          class="contact-form"
+          (ngSubmit)="onSubmit()"
+          #contactFormRef="ngForm"
+        >
+          <h3 class="form-title">Envie uma Mensagem</h3>
+
+          <!-- Mensagens de Status -->
+          <div *ngIf="showSuccess" class="alert success">
+            ✅ Mensagem enviada com sucesso! Retornarei em breve.
+          </div>
+
+          <div *ngIf="showError" class="alert error">
+            ❌ Por favor, preencha todos os campos corretamente.
+          </div>
+
+          <!-- Campos do Formulário -->
+          <div class="form-group">
+            <label for="name">Nome Completo *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              [(ngModel)]="contactForm.name"
+              placeholder="Seu nome completo"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              [(ngModel)]="contactForm.email"
+              placeholder="seu@email.com"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Assunto *</label>
+            <select
+              id="subject"
+              name="subject"
+              [(ngModel)]="contactForm.subject"
+              required
+            >
+              <option value="">Selecione um assunto</option>
+              <option value="freelance">Projeto Freelance</option>
+              <option value="job">Oportunidade de Emprego</option>
+              <option value="partnership">Parceria</option>
+              <option value="consulting">Consultoria</option>
+              <option value="other">Outros</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Mensagem *</label>
+            <textarea
+              id="message"
+              name="message"
+              [(ngModel)]="contactForm.message"
+              placeholder="Conte-me sobre seu projeto ou oportunidade..."
+              rows="5"
+              required
+            ></textarea>
+          </div>
+
+          <!-- Botão Submit -->
+          <button
+            type="submit"
+            class="submit-btn"
+            [disabled]="isSubmitting"
+            [class.loading]="isSubmitting"
+          >
+            <span *ngIf="!isSubmitting">✉️ Enviar Mensagem</span>
+            <span *ngIf="isSubmitting">
+              <div class="spinner"></div>
+              Enviando...
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
